@@ -5,28 +5,27 @@ program main
    integer:: i
    real:: f,g
 
-    A=0 !vazo arxika ola ta stixia ison me miden
-    A=[(i, i=1,size(A),1)]   !dino times ston pinaka me iponooumeni epanalipsi
+    A=0 
+    A=[(i, i=1,size(A),1)]   !Giving values to the array using implied do
 
     do i=1,size(A)
     print*, A(i)
     end do
     print*,
 
-    !gemizo me function anti opos parapano
     do i=1,size(A)
-        A(i)=g(i,x)
+        A(i)=g(i,x) !calling the g function 
+        print*, A(i) !printing each element in every repetition of the loop
     end do
 
        do i=1,size(A)
         z=A(i)
-        print*, f(z)   ! kalo grafontas mia sinartisi kai
-                       !ipologizo me eksoteriki diadikasia kai tipono taftoxrona
+        print*, f(z)   !while calling the external function, i calculate each element, and printing it at the same time
        end do
 
 end program
 
-real function f(z)   !tha perni mia timi apo ton pinaka kai tha dini mia timi f
+real function f(z)   !takes the value z=A(i) and returns the result of the following equation f
 real:: z
 f=sqrt(z**2+10.)
 end function
@@ -38,5 +37,3 @@ integer:: i
 x=0.5
 g=x*10.*float(i)
 end function
-
-!FORTRAN - Giving_values_to_an_one-dimesion_array_through_function
